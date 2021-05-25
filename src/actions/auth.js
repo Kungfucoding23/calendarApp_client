@@ -49,16 +49,14 @@ export const startRegister = ( email, password, name ) => {
     }
 }
 
-export const startChecking = () => {
-    console.log('que pasa')
+export const startChecking = () => {    
     return async(dispatch) => {
 
         const resp = await fetchConToken( 'auth/renew' );
-        const body = await resp.json();
-        console.log(body);
+        const body = await resp.json();        
 
         if( body.ok ) {
-            localStorage.setItem('token', body.token );
+            localStorage.setItem('token', body.nuevoToken );
             localStorage.setItem('token-init-date', new Date().getTime() );
 
             dispatch( login({
